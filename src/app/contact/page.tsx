@@ -13,8 +13,7 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSent(true);
+    e.preventDefault();    setSent(true);
     setTimeout(() => setSent(false), 4000);
     (e.target as HTMLFormElement).reset();
   };

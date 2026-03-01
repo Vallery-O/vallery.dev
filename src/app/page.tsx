@@ -61,7 +61,7 @@ export default function HomePage() {
             transition={{ delay: 2, duration: 0.8 }}
             style={{ fontFamily: "var(--font-dm)", fontSize: "1rem", fontWeight: 300, color: "var(--text-muted)", letterSpacing: "0.02em", maxWidth: 400, lineHeight: 1.7 }}
           >
-            I'm Vallery Otieno <br/> I build scalable web systems and design<br />human-centered digital experiences.
+            I&apos;m Vallery Otieno <br/> I build scalable web systems and design<br />human-centered digital experiences.
           </motion.p>
         </div>
 
