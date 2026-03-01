@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark mode (default) ── */
+:root {
+  --accent: #00d4ff;
+  --accent-dim: rgba(0, 212, 255, 0.12);
+  --accent-glow: rgba(0, 212, 255, 0.4);
+  --bg: #080b0f;
+  --bg2: #0d1117;
+  --bg3: #111820;
+  --surface: #141c24;
+  --surface2: #1a2330;
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #e8edf2;
+  --text-muted: #6b7f8f;
+  --text-dim: #3a4a58;
+  --nav-bg: rgba(8, 11, 15, 0.88);
+  --toggle-track: #1a2330;
+}
+
+/* ── Light mode ── */
+[data-theme="light"] {
+  --accent: #0099bb;
+  --accent-dim: rgba(0, 153, 187, 0.1);
+  --accent-glow: rgba(0, 153, 187, 0.3);
+  --bg: #f5f4f0;
+  --bg2: #eceae4;
+  --bg3: #e2e0d8;
+  --surface: #ffffff;
+  --surface2: #f0eeea;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #12110e;
+  --text-muted: #5a5650;
+  --text-dim: #a09c96;
+  --nav-bg: rgba(245, 244, 240, 0.9);
+  --toggle-track: #d8d5ce;
+}
+
+/* ── Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-dm), sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
+
+/* Smooth property transitions on theme change */
+*, *::before, *::after {
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+/* But don't slow down animations */
+[style*="animation"] {
+  transition: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* Selection */
+::selection { background: var(--accent-dim); color: var(--text); }
+
+/* Prevent flash on load */
+html { background: var(--bg); }
+
