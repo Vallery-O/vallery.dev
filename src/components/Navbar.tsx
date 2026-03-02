@@ -102,7 +102,7 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <a href="/files/Vallery_Resume.pdf" target="_blank" rel="noopener noreferrer"
+            <a href="/files/Vallery-Otieno-R.pdf" target="_blank" rel="noopener noreferrer"
               style={{ fontFamily: "var(--font-dm)", fontSize: "0.9rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)", textDecoration: "none" }}>
               Resume ↗
             </a>
