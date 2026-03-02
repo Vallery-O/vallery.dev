@@ -8,8 +8,24 @@ import Image from "next/image";
 
 function CaseStudyModal({ cs, onClose }: { cs: CaseStudy; onClose: () => void }) {
   return (
+    <>
+    <style>{`
+    @media (max-width: 768px) {
+    .design-header { padding: 100px 1.5rem 2rem !important; }
+    .case-studies-list { padding: 0 1.5rem 4rem !important; }
+    .case-card-cover { height: 220px !important; }
+    .case-card-title { font-size: 1.3rem !important; }
+    .case-card-overlay { padding: 1.5rem !important; }
+    .modal-panel { margin: 0 !important; width: 100vw !important; border-radius: 0 !important; min-height: 100dvh !important; }
+    .modal-content { padding: 1.5rem !important; }
+    .modal-meta-row { flex-wrap: wrap !important; gap: 1rem !important; }
+    .modal-iframe { min-height: 85dvh !important; }
+    }
+  `}</style>
+
+
     <AnimatePresence>
-      <div style={{ position: "fixed", inset: 0, zIndex: 2000, display: "flex", alignItems: "stretch" }}>
+      <div className="modal-container" style={{ position: "fixed", inset: 0, zIndex: 2000, display: "flex", alignItems: "stretch" }}>
         {/* Blur backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -20,7 +36,7 @@ function CaseStudyModal({ cs, onClose }: { cs: CaseStudy; onClose: () => void })
         />
 
         {/* Full-height panel */}
-        <motion.div
+        <motion.div className="modal-panel"
           initial={{ opacity: 0, y: 40, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20 }}
@@ -34,13 +50,13 @@ function CaseStudyModal({ cs, onClose }: { cs: CaseStudy; onClose: () => void })
           }}
         >
           {/* Close bar */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem 1.5rem", borderBottom: "1px solid var(--border)", flexShrink: 0 }}>
+          <div className="modal-meta-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem 1.5rem", borderBottom: "1px solid var(--border)", flexShrink: 0 }}>
             <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1rem", color: "var(--text)" }}>{cs.title}</span>
             <button onClick={onClose} style={{ width: 32, height: 32, borderRadius: "50%", border: "1px solid var(--border)", background: "var(--surface)", color: "var(--text-muted)", cursor: "none" }}>✕</button>
           </div>
 
           {/* Framer iframe */}
-          <iframe
+          <iframe className="modal-iframe"
             src={cs.framerUrl}
             style={{ width: "100%", flex: 1, minHeight: "80vh", border: "none" }}
             title={cs.title}
@@ -48,6 +64,7 @@ function CaseStudyModal({ cs, onClose }: { cs: CaseStudy; onClose: () => void })
         </motion.div>
       </div>
     </AnimatePresence>
+    </>
   );
 }
 
@@ -60,7 +77,7 @@ export default function DesignPage() {
       {selected && <CaseStudyModal cs={selected} onClose={() => setSelected(null)} />}
 
       {/* Header */}
-      <div style={{ paddingTop: 120, paddingBottom: "3rem", maxWidth: 1100, margin: "0 auto", padding: "120px 3rem 3rem" }}>
+      <div className="design-header" style={{ paddingTop: 120, paddingBottom: "3rem", maxWidth: 1100, margin: "0 auto", padding: "120px 3rem 3rem" }}>
         <SectionLabel>Design</SectionLabel>
         <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, color: "var(--text)", marginBottom: "1rem" }}>
           UX/UI Case Studies
@@ -82,7 +99,7 @@ export default function DesignPage() {
               onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = "var(--border)"; el.style.boxShadow = "none"; el.style.transform = "none"; }}
             >
               {/* Cover */}
-              <div style={{ width: "100%", height: 340, position: "relative", overflow: "hidden" }}>
+              <div className="case-card-cover" style={{ width: "100%", height: 340, position: "relative", overflow: "hidden" }}>
               <Image
               src={cs.image}
               alt={cs.title}
@@ -93,7 +110,7 @@ export default function DesignPage() {
                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.25)" }} />
                </div>
               {/* Overlay */}
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "2.5rem 2.5rem 2rem", background: "linear-gradient(to top, rgba(8,11,15,0.98) 0%, rgba(8,11,15,0.6) 60%, transparent 100%)" }}>
+              <div className="case-card-overlay" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "2.5rem 2.5rem 2rem", background: "linear-gradient(to top, rgba(8,11,15,0.98) 0%, rgba(8,11,15,0.6) 60%, transparent 100%)" }}>
                 <div style={{ fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.6rem" }}>{cs.meta}</div>
                 <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.8rem", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--text)", marginBottom: "0.5rem" }}>{cs.title}</h3>
                 <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", maxWidth: 600, lineHeight: 1.6, marginBottom: "1rem" }}>{cs.excerpt}</p>

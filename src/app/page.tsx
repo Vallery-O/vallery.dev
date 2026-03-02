@@ -30,11 +30,35 @@ export default function HomePage() {
   return (
     <>
       <style>{`
-        @keyframes letterReveal { to { opacity:1; transform:translateY(0); } }
-        @keyframes circleScale { to { transform:scale(1); opacity:1; } }
-        @keyframes circlePulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,0);}50%{box-shadow:0 0 60px 10px rgba(0,212,255,0.08);} }
-        @keyframes ringRotate { to { transform:rotate(360deg); } }
-        @keyframes scrollLine { 0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top;}50%{opacity:1;transform:scaleY(1);} }
+      @keyframes letterReveal { to { opacity:1; transform:translateY(0); } }
+      @keyframes circleScale { to { transform:scale(1); opacity:1; } }
+      @keyframes circlePulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,0);}50%{box-shadow:0 0 60px 10px rgba(0,212,255,0.08);} }
+      @keyframes ringRotate { to { transform:rotate(360deg); } }
+      @keyframes scrollLine { 0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top;}50%{opacity:1;transform:scaleY(1);} }
+      
+      /* Hero word responsive */
+      @media (max-width: 900px) {
+      .hero-word { font-size: 8rem !important; }
+      .hero-circle-wrap { width: 340px !important; height: 340px !important; }
+      }
+      @media (max-width: 600px) {
+      .hero-word { font-size: 5rem !important; }
+      .hero-circle-wrap { width: 260px !important; height: 260px !important; }
+      }
+      
+      /* Projects grid */
+      @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr !important; }
+      .projects-section { padding: 4rem 1.5rem !important; }
+      }
+      
+      /* About snapshot */
+      @media (max-width: 768px) {
+      .about-snap-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+      .about-snap-inner { padding: 0 1.5rem !important; }
+      .about-mini-grid { grid-template-columns: 1fr 1fr !important; }
+      }
+      
       `}</style>
 
       {/* HERO */}
@@ -45,13 +69,13 @@ export default function HomePage() {
 
         <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
           {/* Circle */}
-          <div style={{ position: "relative", width: 560, height: 560, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "2rem" }}>
+          <div className="hero-circle-wrap" style={{ position: "relative", width: 560, height: 560, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "2rem" }}>
             {/* Outer dashed ring */}
             <div style={{ position: "absolute", width: "calc(100% + 50px)", height: "calc(100% + 50px)", borderRadius: "50%", border: "1px dashed rgba(0,212,255,0.15)", animation: "circleScale 1.2s cubic-bezier(0.16,1,0.3,1) 0.1s forwards, ringRotate 25s linear 1.5s infinite", transform: "scale(0)", opacity: 0 }} />
             {/* Filled circle */}
             <div style={{ position: "absolute", width: "100%", height: "100%", borderRadius: "50%", background: "radial-gradient(circle at 35% 35%, rgba(0,212,255,0.18), rgba(0,212,255,0.04) 60%, transparent 100%)", border: "1px solid rgba(0,212,255,0.25)", animation: "circleScale 1s cubic-bezier(0.16,1,0.3,1) forwards, circlePulse 4s ease-in-out 1.5s infinite", transform: "scale(0)", opacity: 0 }} />
             {/* Word */}
-            <div ref={wordRef} style={{ position: "relative", zIndex: 2, fontFamily: "var(--font-playfair)", fontSize: "14rem", fontWeight: 900, fontStyle: "italic", letterSpacing: "-0.04em", color: "var(--accent)", display: "flex", lineHeight: 1 }} />
+            <div className="hero-word" ref={wordRef} style={{ position: "relative", zIndex: 2, fontFamily: "var(--font-playfair)", fontSize: "14rem", fontWeight: 900, fontStyle: "italic", letterSpacing: "-0.04em", color: "var(--accent)", display: "flex", lineHeight: 1 }} />
           </div>
 
           {/* Tagline */}
@@ -78,7 +102,7 @@ export default function HomePage() {
       </section>
 
       {/* PROJECTS */}
-      <section style={{ padding: "7rem 3rem", maxWidth: 1100, margin: "0 auto" }}>
+      <section  className="projects-section" style={{ padding: "7rem 3rem", maxWidth: 1100, margin: "0 auto" }}>
         <SectionLabel>Engineering</SectionLabel>
         <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.05, color: "var(--text)", marginBottom: "3.5rem" }}>
           Selected Projects
@@ -121,7 +145,7 @@ export default function HomePage() {
       </section>
 
       {/* ABOUT SNAPSHOT */}
-      <div style={{ background: "var(--bg2)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "6rem 0" }}>
+      <div className="about-snapshot" style={{ background: "var(--bg2)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "6rem 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 3rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
           <RevealOnScroll>
             <SectionLabel>About me</SectionLabel>

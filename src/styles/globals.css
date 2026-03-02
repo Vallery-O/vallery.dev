@@ -82,3 +82,10 @@ body {
 /* Prevent flash on load */
 html { background: var(--bg); }
 
+/* ── Mobile base ── */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;  
+  }
+}
+

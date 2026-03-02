@@ -21,11 +21,21 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div style={{ paddingTop: 120, paddingBottom: "4rem", maxWidth: 1100, margin: "0 auto", padding: "120px 3rem 4rem", display: "grid", gridTemplateColumns: "280px 1fr", gap: "5rem", alignItems: "start" }}>
+    <>
+    <style>{`
+      @media (max-width: 768px) {
+      .about-layout { grid-template-columns: 1fr !important; padding: 100px 1.5rem 3rem !important; }
+      .about-photo-col { position: static !important; }
+      .about-photo-img { aspect-ratio: 1/1 !important; }  /* square crop on mobile */
+    }
+    `}</style>
 
+  
+    
+    <div className="about-layout" style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: "4rem", padding: "120px 3rem 3rem", maxWidth: 1100, margin: "0 auto" }}>
       {/* Sticky photo column */}
-      <div style={{ position: "sticky", top: 100 }}>
-        <div style={{ width: "100%", aspectRatio: "3/4", borderRadius: 16, border: "1px solid var(--border)", overflow: "hidden", position: "relative" }}>
+      <div className="about-photo-col" style={{ position: "sticky", top: 100 }}>
+        <div className="about-photo-img" style={{ width: "100%", aspectRatio: "3/4", borderRadius: 16, border: "1px solid var(--border)", overflow: "hidden", position: "relative" }}>
         <Image
         src="/images/avatar.png"
         alt="Vallery"
@@ -94,5 +104,6 @@ export default function AboutPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
