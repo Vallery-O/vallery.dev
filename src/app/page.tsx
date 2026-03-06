@@ -8,7 +8,7 @@ import Tag from "@/components/Tag";
 import Image from "next/image";
 import { projects } from "@/lib/projects";
 
-const WORD = "<Hello../>";
+const WORD = "</Hello..>";
 
 export default function HomePage() {
   const wordRef = useRef<HTMLDivElement>(null);
