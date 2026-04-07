@@ -33,12 +33,22 @@ export const projects: Project[] = [
   {
     id: "node",
     emoji: "⚡",
-    image: "/images/projects/orbit.jpg",
+    image: "/images/orbit.jpg",
     name: "Node + PostgreSQL ",
     description: "",
     tags: ["Docker", "PostgreSQL"],
     neutralTags: ["Containers"],
     githubUrl: "https://github.com/Vallery-O/Docker-Node-APP/",
+  },
+  {
+    id: "API",
+    emoji: "⚡",
+    image: "/images/fx.png",
+    name: "Transaction aware FX API",
+    description: "Currency exchange API with real-time rates, caching, and safe transaction FX conversion.",
+    tags: ["API", "Django", "Redis", "Celery"],
+    neutralTags: ["Backend"],
+    githubUrl: "https://github.com/Vallery-O/Transaction-aware-FX-API",
   },
   
 ];

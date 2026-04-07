@@ -166,16 +166,16 @@ export default function HomePage() {
           <RevealOnScroll delay={0.15}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
               {[
-                { icon: "💻", title: "Engineering", desc: "Python, TypeScript, Node.js, AWS —  code and scalable architecture." },
-                { icon: "🎨", title: "Design", desc: "UX research, Figma prototyping, and accessible interface design." },
-                { icon: "🤖", title: "AI ", desc: "Integrating AI tooling into practical design workflows." },
-                { icon: "📐", title: "Systems", desc: "Architecture decisions that scale — from prototype to production." },
+                { title: "Engineering", desc: "Python, TypeScript, Node.js, AWS —  code and scalable architecture." },
+                { title: "Design", desc: "UX research, Figma prototyping, and accessible interface design." },
+                { title: "AI ", desc: "Integrating AI tooling into practical design workflows." },
+                { title: "Systems", desc: "Architecture decisions that scale — from prototype to production." },
               ].map((card) => (
                 <div key={card.title} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: "1.25rem", transition: "border-color 0.3s", cursor: "none" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,212,255,0.25)"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--border)"; }}
                 >
-                  <div style={{ fontSize: "1.3rem", marginBottom: "0.6rem" }}>{card.icon}</div>
+                  <div style={{ fontSize: "1.3rem", marginBottom: "0.6rem" }}></div>
                   <h4 style={{ fontFamily: "var(--font-playfair)", fontSize: "0.85rem", fontWeight: 700, color: "var(--text)", marginBottom: "0.3rem" }}>{card.title}</h4>
                   <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", lineHeight: 1.5 }}>{card.desc}</p>
                 </div>
